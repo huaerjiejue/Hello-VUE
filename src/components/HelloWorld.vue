@@ -1,17 +1,30 @@
 <script setup>
 import { ref } from 'vue'
+import { inject} from "vue";
 
 defineProps({
   msg: String,
 })
 
 const count = ref(0)
+
+const $axios = inject('$axios')
+if(!$axios) {
+  console.error('axios is not provided')
+}
+const handleClick = async () => {
+  try {
+    const res = await $axios.get('/hello')
+    console.log(res)
+  } catch (error) {
+    console.error(error)
+  }
+}
 </script>
 
 <template>
   <h1>{{ msg }}</h1>
-  <h2>hello world</h2>
-
+  <el-button type="primary" @click="handleClick">我是 ElButton</el-button>
   <div class="card">
     <button type="button" @click="count++">count is {{ count }}</button>
     <p>
