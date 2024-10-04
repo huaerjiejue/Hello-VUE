@@ -1,11 +1,14 @@
 <script setup>
 import HelloWorld from './components/HelloWorld.vue'
 import {Document, Filter, Setting} from "@element-plus/icons-vue";
-
+import NavBar from "./components/NavBar.vue";
 </script>
 
 <template>
+
   <div>
+    <NavBar/>
+    <router-view/>
     <a href="https://vitejs.dev" target="_blank">
       <img src="/vite.svg" class="logo" alt="Vite logo"/>
     </a>
@@ -14,6 +17,7 @@ import {Document, Filter, Setting} from "@element-plus/icons-vue";
     </a>
 
   </div>
+
   <el-icon>
     <document/>
   </el-icon>
@@ -21,6 +25,7 @@ import {Document, Filter, Setting} from "@element-plus/icons-vue";
     <Filter/>
   </el-icon>
   <HelloWorld msg="Vite + Vue"/>
+
 <!--  <el-button type="primary">我是 ElButton</el-button>-->
 </template>
 

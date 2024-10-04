@@ -8,7 +8,7 @@ defineProps({
 
 const count = ref(0)
 
-const $axios = inject('$axios')
+const $axios = inject('$axios')  //使用inject和main.js中的provide提供的axios实例
 if(!$axios) {
   console.error('axios is not provided')
 }
