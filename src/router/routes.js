@@ -5,7 +5,8 @@ import About from "../components/About.vue";
 
 const routes = [
     { path: '/', component: Home },
-    { path: '/about', component: About },
+    { path: '/about', component: About},
+    { path: '/about/:id', component: About, props: true},
 ]
 
 const router = createRouter({
