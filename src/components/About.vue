@@ -8,7 +8,7 @@
 </script>
 
 <template>
-  <h1>About {{ id**2 }}</h1>
+  <h1>About {{ id }}</h1>
 </template>
 
 <style scoped>
