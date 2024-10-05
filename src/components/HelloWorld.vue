@@ -1,7 +1,6 @@
 <script setup>
 import { inject } from "vue";
-import {useStore} from "vuex";
-import {computed} from "vue";
+import { useCounterStore} from "../stores/useCounterStore.js";
 
 defineProps({
   msg: String,
@@ -23,15 +22,9 @@ const handleClick = async () => {
   }
 }
 
-// Vuex store
-const store = useStore()
+// Vuex stores
+const store = useCounterStore()
 
-// 获取 state, actions, getters
-const count = computed(() => store.state.count)
-const increment = () => {
-  store.dispatch('increment')
-}
-const getOdd = computed(() => store.getters.get_odd)
 </script>
 
 <template>
@@ -45,8 +38,11 @@ const getOdd = computed(() => store.getters.get_odd)
 <!--    将两个按钮和一个显示放在同一行显示美观    -->
     <div class="button-row">
       <el-button type="primary" @click="handleClick">我是 ElButton</el-button>
-      <button type="button" @click="increment">count is {{count}}</button>
-      <p>count is odd: {{getOdd}}</p>
+      <button type="button" @click="store.increment()">count is {{store.count}}</button>
+<!--      下面的功能没有实现呢，getter中的是数值而不是方法，为了美观也就设置了一个button的样式，实际上没有实现什么功能-->
+      <button type="button">doubleCount is {{store.doubleCount}}</button>
+<!--      <p>count is odd: {{getOdd}}</p>-->
+      <button type="button" @click="store.$reset()">resetCounter</button>
     </div>
 
     <p>
